@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 Εγχειρίδιο Python & Flask - Δημιουργία Web Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .intro-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .intro-box h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 10px 10px 0 0;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 1rem 2rem;
+            background: #e0e0e0;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            background: #d0d0d0;
+        }
+
+        .tab.active {
+            background: white;
+            color: #667eea;
+        }
+
+        .tab-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .tab-pane {
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .step h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: #e8f0ff;
+            border-radius: 5px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .copy-btn:hover {
+            background: #5a5ed6;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .concept-card {
+            background: #f0f4ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 2px solid #667eea;
+        }
+
+        .concept-card h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-section {
+            background: #fff9e6;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border: 2px dashed #ffc107;
+        }
+
+        .activity-section h2 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            background: #e0e0e0;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .progress {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin: 1rem 0;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #5a5ed6;
+            transform: translateY(-2px);
+        }
+
+        .emoji {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🐍 Εγχειρίδιο Python & Flask</h1>
+            <p>Δημιουργία Web Server σε 40 λεπτά - Εργαστήριο για Αρχάριους</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="intro-box">
+            <h2>🎯 Καλώς ήρθατε στον κόσμο του Web Development!</h2>
+            <p>Σήμερα θα μάθουμε να δημιουργούμε τη δική μας ιστοσελίδα χρησιμοποιώντας Python και Flask. Μην ανησυχείτε αν δεν έχετε εμπειρία - θα προχωρήσουμε βήμα-βήμα μαζί!</p>
+            
+            <div class="info-box">
+                <strong>⏱️ Διάρκεια:</strong> 40 λεπτά<br>
+                <strong>🎓 Επίπεδο:</strong> Αρχάριοι (καμία προηγούμενη εμπειρία)<br>
+                <strong>🎉 Στόχος:</strong> Να δημιουργήσετε τη δική σας ιστοσελίδα δήμου και να τη μοιραστείτε με τους συμφοιτητές σας!
+            </div>
+        </div>
+
+        <div class="timer" id="timer">40:00</div>
+        <div class="progress-bar">
+            <div class="progress" id="progress">0%</div>
+        </div>
+
+        <!-- Βασικές Έννοιες -->
+        <div class="intro-box">
+            <h2>📚 Τι θα χρειαστούμε - Βασικές Έννοιες</h2>
+            
+            <div class="concept-card">
+                <h4>🐍 Python</h4>
+                <p><strong>Τι είναι:</strong> Μια γλώσσα προγραμματισμού που μοιάζει με απλά αγγλικά. Σαν να δίνετε οδηγίες στον υπολογιστή σας με απλές λέξεις!</p>
+                <p><strong>Γιατί την χρησιμοποιούμε:</strong> Είναι η πιο εύκολη γλώσσα για αρχάριους και πολύ δημοφιλής για web development.</p>
+            </div>
+
+            <div class="concept-card">
+                <h4>📦 Virtual Environment (venv)</h4>
+                <p><strong>Τι είναι:</strong> Φανταστείτε το σαν ένα ξεχωριστό "δωμάτιο" στον υπολογιστή σας όπου βάζετε μόνο τα εργαλεία για αυτό το project.</p>
+                <p><strong>Γιατί το χρειαζόμαστε:</strong> Για να μην μπερδευτούν τα προγράμματα μεταξύ τους - κάθε project έχει το δικό του χώρο!</p>
+            </div>
+
+            <div class="concept-card">
+                <h4>🌐 Flask</h4>
+                <p><strong>Τι είναι:</strong> Ένα εργαλείο που μετατρέπει τον υπολογιστή σας σε web server - σαν να γίνεται ο υπολογιστής σας μια μικρή ιστοσελίδα!</p>
+                <p><strong>Γιατί το χρησιμοποιούμε:</strong> Είναι απλό και ιδανικό για μικρές ιστοσελίδες όπως αυτή που θα φτιάξουμε.</p>
+            </div>
+        </div>
+
+        <!-- Tabs για διαφορετικά λειτουργικά -->
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('windows')">🪟 Windows</button>
+            <button class="tab" onclick="showTab('mac')">🍎 Mac</button>
+            <button class="tab" onclick="showTab('linux')">🐧 Linux</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Windows Tab -->
+            <div id="windows" class="tab-pane active">
+                <h2>Οδηγίες για Windows</h2>
+                
+                <div class="step">
+                    <h3><span class="step-number">1</span> Εγκατάσταση Python</h3>
+                    <p>Πρώτα πρέπει να εγκαταστήσουμε την Python στον υπολογιστή μας.</p>
+                    
+                    <ol>
+                        <li>Ανοίξτε τον browser σας και πηγαίνετε στο: <strong>python.org/downloads</strong></li>
+                        <li>Κάντε κλικ στο μεγάλο κίτρινο κουμπί "Download Python"</li>
+                        <li>Όταν κατέβει, κάντε διπλό κλικ στο αρχείο</li>
+                        <li><strong>ΠΡΟΣΟΧΗ:</strong> ✅ Τσεκάρετε το κουτάκι "Add Python to PATH" στο κάτω μέρος!</li>
+                        <li>Κάντε κλικ "Install Now"</li>
+                    </ol>
+                    
+                    <div class="warning">
+                        ⚠️ <strong>Σημαντικό:</strong> Αν ξεχάσετε το "Add Python to PATH", θα έχουμε προβλήματα αργότερα!
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="win-python" onchange="updateProgress()">
+                        <label for="win-python">✓ Εγκατέστησα την Python</label>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Κατέβασμα του Project</h3>
+                    <p>Τώρα θα κατεβάσουμε τον κώδικα της ιστοσελίδας.</p>
+                    
+                    <p>Ανοίξτε το PowerShell:</p>
+                    <ol>
+                        <li>Πατήστε το πλήκτρο Windows</li>
+                        <li>Πληκτρολογήστε "PowerShell"</li>
+                        <li>Κάντε κλικ στο "Windows PowerShell"</li>
+                    </ol>
+                    
+                    <p>Τώρα πληκτρολογήστε τις παρακάτω εντολές μία-μία:</p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>cd Desktop</pre>
+                    </div>
+                    <p><em>Αυτό σας πάει στην Επιφάνεια Εργασίας</em></p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>git clone [URL του repository από τον εκπαιδευτή]</pre>
+                    </div>
+                    <p><em>Αυτό κατεβάζει τον κώδικα - ο εκπαιδευτής θα σας δώσει το URL</em></p>
+                    
+                    <div class="info-box">
+                        💡 <strong>Αν δεν έχετε git:</strong> Ο εκπαιδευτής θα σας δώσει έναν φάκελο σε USB ή θα κατεβάσετε ένα ZIP αρχείο
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="win-download" onchange="updateProgress()">
+                        <label for="win-download">✓ Κατέβασα το project</label>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Εγκατάσταση του Project</h3>
+                    <p>Τώρα θα εγκαταστήσουμε όλα τα απαραίτητα για να τρέξει η ιστοσελίδα.</p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>cd 01_simple_server</pre>
+                    </div>
+                    <p><em>Μπαίνουμε στον φάκελο του project</em></p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>python -m venv venv</pre>
+                    </div>
+                    <p><em>Δημιουργούμε το "δωμάτιο" για το project μας</em></p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>venv\Scripts\activate</pre>
+                    </div>
+                    <p><em>Μπαίνουμε στο "δωμάτιο"</em></p>
+                    
+                    <div class="success-box">
+                        ✅ Αν δείτε <strong>(venv)</strong> στην αρχή της γραμμής, τα πήγατε τέλεια!
+                    </div>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>pip install -r requirements.txt</pre>
+                    </div>
+                    <p><em>Εγκαθιστούμε το Flask</em></p>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="win-install" onchange="updateProgress()">
+                        <label for="win-install">✓ Εγκατέστησα το Flask</label>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">4</span> Εκκίνηση της Ιστοσελίδας!</h3>
+                    <p>Ήρθε η ώρα να δούμε την ιστοσελίδα μας!</p>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>python app.py</pre>
+                    </div>
+                    
+                    <div class="success-box">
+                        🎉 <strong>Συγχαρητήρια!</strong> Η ιστοσελίδα σας τρέχει!<br>
+                        Ανοίξτε τον browser και πηγαίνετε στο: <strong>http://localhost:5001</strong>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="win-run" onchange="updateProgress()">
+                        <label for="win-run">✓ Βλέπω την ιστοσελίδα!</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mac Tab -->
+            <div id="mac" class="tab-pane">
+                <h2>Οδηγίες για Mac</h2>
+                
+                <div class="step">
+                    <h3><span class="step-number">1</span> Έλεγχος Python</h3>
+                    <p>Τα Mac συνήθως έχουν ήδη Python. Ας το ελέγξουμε!</p>
+                    
+                    <p>Ανοίξτε το Terminal:</p>
+                    <ol>
+                        <li>Πατήστε <strong>⌘ + Space</strong></li>
+                        <li>Πληκτρολογήστε "Terminal"</li>
+                        <li>Πατήστε Enter</li>
+                    </ol>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>python3 --version</pre>
+                    </div>
+                    
+                    <p>Αν δείτε κάτι σαν "Python 3.x.x", είστε έτοιμοι! Αν όχι:</p>
+                    <ol>
+                        <li>Πηγαίνετε στο python.org/downloads</li>
+                        <li>Κατεβάστε την έκδοση για Mac</li>
+                        <li>Εγκαταστήστε την</li>
+                    </ol>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="mac-python" onchange="updateProgress()">
+                        <label for="mac-python">✓ Έχω Python</label>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Κατέβασμα του Project</h3>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>cd Desktop</pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>git clone [URL του repository από τον εκπαιδευτή]</pre>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="mac-download" onchange="updateProgress()">
+                        <label for="mac-download">✓ Κατέβασα το project</label>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Εγκατάσταση</h3>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>cd 01_simple_server</pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>python3 -m venv venv</pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>source venv/bin/activate</pre>
+                    </div>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>pip install -r requirements.txt</pre>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="mac-install" onchange="updateProgress()">
+                        <label for="mac-install">✓ Εγκατέστησα το Flask</label>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">4</span> Εκκίνηση!</h3>
+                    
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                        <pre>python app.py</pre>
+                    </div>
+                    
+                    <div class="success-box">
+                        🎉 Ανοίξτε τον browser στο: <strong>http://localhost:5001</strong>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="mac-run" onchange="updateProgress()">
+                        <label for="mac-run">✓ Βλέπω την ιστοσελίδα!</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linux Tab -->
+            <div id="linux" class="tab-pane">
+                <h2>Οδηγίες για Linux</h2>
+                <p>Οι οδηγίες είναι παρόμοιες με το Mac. Χρησιμοποιήστε τις εντολές από την καρτέλα Mac!</p>
+            </div>
+        </div>
+
+        <!-- Δραστηριότητα -->
+        <div class="activity-section">
+            <h2>🎨 Ώρα για Δημιουργία! (15 λεπτά)</h2>
+            <p>Τώρα θα προσαρμόσετε την ιστοσελίδα για τον δικό σας δήμο!</p>
+            
+            <div class="step">
+                <h3>📝 Άνοιγμα στο Visual Studio Code</h3>
+                <ol>
+                    <li>Ανοίξτε το Visual Studio Code</li>
+                    <li>File → Open Folder → Επιλέξτε τον φάκελο "01_simple_server"</li>
+                    <li>Δείτε τα αρχεία στα αριστερά</li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <h3>✏️ Αλλαγές που θα κάνετε</h3>
+                
+                <h4>1. Αλλάξτε το όνομα του Δήμου</h4>
+                <p>Ανοίξτε το αρχείο <code>templates/index.html</code></p>
+                <p>Βρείτε όλα τα "Δήμος Άρτας" και αλλάξτε τα με τον δικό σας δήμο</p>
+                
+                <h4>2. Προσθέστε τις δικές σας υπηρεσίες</h4>
+                <p>Ανοίξτε το αρχείο <code>app.py</code></p>
+                <p>Βρείτε τη λίστα <code>services_list</code> και προσθέστε υπηρεσίες του δήμου σας</p>
+                
+                <h4>3. Αλλάξτε τα στοιχεία επικοινωνίας</h4>
+                <p>Στο <code>app.py</code>, βρείτε το <code>contact_info</code> και βάλτε τα στοιχεία του δήμου σας</p>
+                
+                <h4>4. (Προαιρετικό) Αλλάξτε τα χρώματα</h4>
+                <p>Ανοίξτε το <code>static/style.css</code> και πειραματιστείτε με τα χρώματα!</p>
+                
+                <div class="info-box">
+                    💡 <strong>Tip:</strong> Με το GitHub Copilot, απλά γράψτε σχόλια για το τι θέλετε και θα σας προτείνει κώδικα!
+                </div>
+            </div>
+        </div>
+
+        <!-- Διαμοιρασμός -->
+        <div class="activity-section">
+            <h2>🌐 Μοιραστείτε με τους Συμφοιτητές σας! (10 λεπτά)</h2>
+            
+            <div class="step">
+                <h3>🔍 Βρείτε την IP σας</h3>
+                
+                <p><strong>Windows:</strong> Στο PowerShell γράψτε:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                    <pre>ipconfig</pre>
+                </div>
+                <p>Ψάξτε για "IPv4 Address"</p>
+                
+                <p><strong>Mac/Linux:</strong> Στο Terminal γράψτε:</p>
+                <div class="code-block">
+                    <button class="copy-btn" onclick="copyCode(this)">📋 Αντιγραφή</button>
+                    <pre>ifconfig | grep inet</pre>
+                </div>
+                
+                <div class="info-box">
+                    Η IP σας θα είναι κάτι σαν: <strong>192.168.1.XX</strong> ή <strong>10.0.0.XX</strong>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>👥 Πείτε στους άλλους</h3>
+                <p>Δώστε στους συμφοιτητές σας τη διεύθυνση:</p>
+                <p><strong>http://[Η-IP-ΣΑΣ]:5001</strong></p>
+                <p>Π.χ. http://192.168.1.105:5001</p>
+                
+                <div class="warning">
+                    ⚠️ Πρέπει να είστε στο ίδιο WiFi δίκτυο!
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>🎉 Επισκεφτείτε τις σελίδες των άλλων!</h3>
+                <p>Ανοίξτε τον browser και δοκιμάστε τις διευθύνσεις που σας δίνουν οι συμφοιτητές σας!</p>
+            </div>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="intro-box">
+            <h2>🔧 Συχνά Προβλήματα & Λύσεις</h2>
+            
+            <div class="step">
+                <h3>❌ "python" is not recognized (Windows)</h3>
+                <p><strong>Λύση:</strong> Δοκιμάστε <code>py</code> αντί για <code>python</code></p>
+            </div>
+
+            <div class="step">
+                <h3>❌ Δεν μπορώ να δω τη σελίδα των άλλων</h3>
+                <p><strong>Λύσεις:</strong></p>
+                <ul>
+                    <li>Ελέγξτε ότι είστε στο ίδιο WiFi</li>
+                    <li>Ελέγξτε ότι το firewall επιτρέπει την πρόσβαση</li>
+                    <li>Σιγουρευτείτε ότι ο server τρέχει (δεν σταμάτησε με Ctrl+C)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>❌ ModuleNotFoundError: No module named 'flask'</h3>
+                <p><strong>Λύση:</strong> Ξεχάσατε να ενεργοποιήσετε το venv ή να κάνετε pip install</p>
+            </div>
+        </div>
+
+        <!-- Επόμενα Βήματα -->
+        <div class="intro-box">
+            <h2>🚀 Επόμενα Βήματα</h2>
+            <p>Μόλις μάθατε τα βασικά του web development! Μπορείτε τώρα να:</p>
+            <ul>
+                <li>Προσθέσετε περισσότερες σελίδες</li>
+                <li>Μάθετε να αποθηκεύετε δεδομένα σε database</li>
+                <li>Κάνετε τη φόρμα επικοινωνίας να λειτουργεί πραγματικά</li>
+                <li>Ανεβάσετε την ιστοσελίδα σας στο internet!</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Timer functionality
+        let timeLeft = 40 * 60; // 40 minutes in seconds
+        let timerInterval;
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Τέλος χρόνου! Μπράβο για την προσπάθεια!');
+                }
+            }, 1000);
+        }
+
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-pane').forEach(pane => {
+                pane.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Copy code functionality
+        function copyCode(button) {
+            const codeBlock = button.parentElement.querySelector('pre');
+            const text = codeBlock.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = '✅ Αντιγράφηκε!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            });
+        }
+
+        // Progress tracking
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const totalCount = checkboxes.length;
+            const percentage = Math.round((checkedCount / totalCount) * 100);
+            
+            const progressBar = document.getElementById('progress');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+            
+            // Save progress to localStorage
+            checkboxes.forEach(cb => {
+                localStorage.setItem(cb.id, cb.checked);
+            });
+        }
+
+        // Load saved progress
+        function loadProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                const saved = localStorage.getItem(cb.id);
+                if (saved === 'true') {
+                    cb.checked = true;
+                }
+            });
+            updateProgress();
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            startTimer();
+            loadProgress();
+        });
+    </script>
+</body>
+</html>
