@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Υπηρεσίες - Δήμος Άρτας</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>🏛️ Δήμος Άρτας</h1>
+                <p>Municipality of Arta</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Αρχική</a></li>
+                    <li><a href="{{ url_for('services') }}" class="active">Υπηρεσίες</a></li>
+                    <li><a href="{{ url_for('contact') }}">Επικοινωνία</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <h2>Υπηρεσίες Δήμου Άρτας</h2>
+                <p>Ο Δήμος Άρτας παρέχει ποικίλες υπηρεσίες στους πολίτες για τη διευκόλυνση της καθημερινότητάς τους.</p>
+                
+                <div class="services-list">
+                    {% for service in services %}
+                    <div class="service-item">
+                        <h3>{{ service }}</h3>
+                        <p>Αναλυτικές πληροφορίες για την υπηρεσία "{{ service }}" θα βρείτε στα γραφεία του δήμου.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="service-hours">
+                    <h3>Ωράριο Εξυπηρέτησης</h3>
+                    <p><strong>Δευτέρα - Παρασκευή:</strong> 08:00 - 15:00</p>
+                    <p><strong>Σάββατο - Κυριακή:</strong> Κλειστά</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Δήμος Άρτας. Όλα τα δικαιώματα διατηρούνται.</p>
+            <p>Πλατεία Εθνικής Αντίστασης 1, Άρτα 47100 | Τηλ: +30 26810 35000</p>
+        </div>
+    </footer>
+</body>
+</html> 

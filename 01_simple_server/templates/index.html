@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Δήμος Άρτας - Αρχική Σελίδα</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>🏛️ Δήμος Άρτας</h1>
+                <p>Municipality of Arta</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('home') }}">Αρχική</a></li>
+                    <li><a href="{{ url_for('services') }}">Υπηρεσίες</a></li>
+                    <li><a href="{{ url_for('contact') }}">Επικοινωνία</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Καλώς ήρθατε στον Δήμο Άρτας</h2>
+                <p>Ο Δήμος Άρτας είναι ένας από τους σημαντικότερους δήμους της Ηπείρου, με πλούσια ιστορία και παράδοση.</p>
+                <div class="cta-buttons">
+                    <a href="{{ url_for('services') }}" class="btn btn-primary">Υπηρεσίες Πολιτών</a>
+                    <a href="{{ url_for('contact') }}" class="btn btn-secondary">Επικοινωνία</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h3>Βασικές Υπηρεσίες</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📋 Διοικητικές Υπηρεσίες</h4>
+                        <p>Έκδοση πιστοποιητικών, βεβαιώσεων και άλλων διοικητικών εγγράφων</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏢 Επιχειρηματικότητα</h4>
+                        <p>Υποστήριξη και αδειοδότηση επιχειρηματικών δραστηριοτήτων</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌱 Περιβάλλον</h4>
+                        <p>Προστασία περιβάλλοντος και προγράμματα ανακύκλωσης</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👥 Κοινωνικές Υπηρεσίες</h4>
+                        <p>Υπηρεσίες στήριξης πολιτών και κοινωνικής μέριμνας</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="news">
+            <div class="container">
+                <h3>Ανακοινώσεις</h3>
+                <div class="news-grid">
+                    <article class="news-item">
+                        <h4>Νέο Ωράριο Λειτουργίας</h4>
+                        <p>Από 1η Ιανουαρίου το ωράριο εξυπηρέτησης πολιτών είναι 08:00-15:00</p>
+                        <small>📅 15 Δεκεμβρίου 2024</small>
+                    </article>
+                    <article class="news-item">
+                        <h4>Πρόγραμμα Ανακύκλωσης</h4>
+                        <p>Νέα σημεία συλλογής ανακυκλώσιμων υλικών στις γειτονιές της πόλης</p>
+                        <small>📅 10 Δεκεμβρίου 2024</small>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Δήμος Άρτας. Όλα τα δικαιώματα διατηρούνται.</p>
+            <p>Πλατεία Εθνικής Αντίστασης 1, Άρτα 47100 | Τηλ: +30 26810 35000</p>
+        </div>
+    </footer>
+</body>
+</html> 
