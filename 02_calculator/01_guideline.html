@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Οδηγίες Εκπαιδευτή - Υπολογιστής Δημοτικών Τελών</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 { color: #2c3e50; }
+        h1 { text-align: center; border-bottom: 3px solid #3498db; padding-bottom: 1rem; }
+        .highlight { background: #e8f4fd; padding: 1rem; border-left: 4px solid #3498db; margin: 1rem 0; border-radius: 5px; }
+        .exercise { background: #f8f9fa; padding: 1.5rem; margin: 1rem 0; border-radius: 8px; border-left: 4px solid #28a745; }
+        .warning { background: #fff3cd; border: 1px solid #ffeaa7; padding: 1rem; border-radius: 5px; margin: 1rem 0; }
+        .code { background: #f8f9fa; padding: 0.5rem; border-radius: 3px; font-family: monospace; font-size: 0.9rem; }
+        .timeline { background: #e9ecef; padding: 1rem; border-radius: 5px; margin: 1rem 0; }
+        ul li { margin-bottom: 0.5rem; }
+        .section { margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 Οδηγίες Εκπαιδευτή - Υπολογιστής Δημοτικών Τελών</h1>
+        
+        <div class="highlight">
+            <h3>📋 Στόχος της Άσκησης</h3>
+            <p>Οι σπουδαστές θα μάθουν να χειρίζονται φόρμες Flask, να κάνουν υπολογισμούς και να εμφανίζουν αποτελέσματα. Η άσκηση εστιάζει στην πρακτική εφαρμογή των βασικών αρχών web development.</p>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Προετοιμασία Εργαστηρίου</h2>
+            
+            <h3>Βήματα Εκπαιδευτή:</h3>
+            <ol>
+                <li><strong>Έλεγχος περιβάλλοντος:</strong> Βεβαιωθείτε ότι όλοι έχουν Python 3.6+</li>
+                <li><strong>Αντιγραφή αρχείων:</strong> Μοιράστε το φάκελο 02_calculator</li>
+                <li><strong>Demo εφαρμογής:</strong> Δείξτε την εφαρμογή στη διεύθυνση http://localhost:5002</li>
+                <li><strong>Επεξήγηση δομής:</strong> Παρουσιάστε τη δομή των αρχείων</li>
+            </ol>
+
+            <div class="warning">
+                <strong>⚠️ Σημαντικό:</strong> Βεβαιωθείτε ότι όλοι οι σπουδαστές μπορούν να δημιουργήσουν virtual environment πριν ξεκινήσετε.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Δομή Μαθήματος (60 λεπτά)</h2>
+            
+            <div class="timeline">
+                <h3>⏰ Προτεινόμενο Χρονοδιάγραμμα:</h3>
+                <ul>
+                    <li><strong>0-10 λεπτά:</strong> Εισαγωγή και εγκατάσταση</li>
+                    <li><strong>10-20 λεπτά:</strong> Ανάλυση κώδικα app.py</li>
+                    <li><strong>20-25 λεπτά:</strong> Άσκηση 1 (Αλλαγή τιμών)</li>
+                    <li><strong>25-35 λεπτά:</strong> Άσκηση 2 (Νέος τύπος πιστοποιητικού)</li>
+                    <li><strong>35-50 λεπτά:</strong> Άσκηση 3 (Έκπτωση συνταξιούχων)</li>
+                    <li><strong>50-60 λεπτά:</strong> Ερωτήσεις και εκτίμηση</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Εκπαιδευτικοί Στόχοι</h2>
+            
+            <div class="exercise">
+                <h3>🟢 Άσκηση 1: Αλλαγή Τιμών (Εύκολη)</h3>
+                <p><strong>Στόχος:</strong> Κατανόηση μεταβλητών και σταθερών</p>
+                <p><strong>Τι μαθαίνουν:</strong></p>
+                <ul>
+                    <li>Πως οι Python μεταβλητές επηρεάζουν την εφαρμογή</li>
+                    <li>Επανεκκίνηση server μετά από αλλαγές</li>
+                    <li>Βασική αλλαγή τιμών</li>
+                </ul>
+                <p><strong>Αρχεία που αλλάζουν:</strong> Μόνο <span class="code">app.py</span></p>
+            </div>
+
+            <div class="exercise">
+                <h3>🟡 Άσκηση 2: Νέος Τύπος Πιστοποιητικού (Μέτρια)</h3>
+                <p><strong>Στόχος:</strong> Τροποποίηση δεδομένων και HTML templates</p>
+                <p><strong>Τι μαθαίνουν:</strong></p>
+                <ul>
+                    <li>Python λίστες και προσθήκη στοιχείων</li>
+                    <li>Πως οι αλλαγές στο backend εμφανίζονται στο frontend</li>
+                    <li>Jinja2 templating loops</li>
+                </ul>
+                <p><strong>Αρχεία που αλλάζουν:</strong> Μόνο <span class="code">app.py</span></p>
+            </div>
+
+            <div class="exercise">
+                <h3>🔴 Άσκηση 3: Έκπτωση Συνταξιούχων (Δύσκολη)</h3>
+                <p><strong>Στόχος:</strong> Ολοκληρωμένη προσθήκη νέας λειτουργικότητας</p>
+                <p><strong>Τι μαθαίνουν:</strong></p>
+                <ul>
+                    <li>Form handling με νέα πεδία</li>
+                    <li>Conditional logic σε Python</li>
+                    <li>HTML form elements</li>
+                    <li>Template variables και conditionals</li>
+                    <li>Συντονισμός μεταξύ Python, HTML και CSS</li>
+                </ul>
+                <p><strong>Αρχεία που αλλάζουν:</strong> <span class="code">app.py</span>, <span class="code">calculator.html</span>, <span class="code">αποτελεσμα.html</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Συμβουλές Εκπαιδευτή</h2>
+            
+            <h3>🎓 Πριν ξεκινήσετε:</h3>
+            <ul>
+                <li>Δείξτε την εφαρμογή σε λειτουργία πρώτα</li>
+                <li>Εξηγήστε τη δομή φακέλων (templates/, static/, app.py)</li>
+                <li>Τονίστε τη σημασία του virtual environment</li>
+                <li>Προετοιμάστε backup κώδικα για γρήγορη αποκατάσταση</li>
+            </ul>
+
+            <h3>🔧 Κατά τη διάρκεια:</h3>
+            <ul>
+                <li>Ενθαρρύνετε τους σπουδαστές να δοκιμάζουν μετά από κάθε αλλαγή</li>
+                <li>Εξηγήστε τα error messages όταν εμφανίζονται</li>
+                <li>Δείξτε πως να χρησιμοποιούν το browser developer tools</li>
+                <li>Τονίστε τη σημασία των σχολίων στον κώδικα</li>
+            </ul>
+
+            <h3>🚨 Κοινά προβλήματα:</h3>
+            <ul>
+                <li><strong>Virtual environment δεν ενεργοποιείται:</strong> Ελέγξτε το path και τη σύνταξη</li>
+                <li><strong>Template not found:</strong> Έλεγχος ορθογραφίας και φακέλου templates/</li>
+                <li><strong>CSS δεν φορτώνει:</strong> Έλεγχος φακέλου static/ και browser cache</li>
+                <li><strong>Port already in use:</strong> Αλλαγή port στο app.py ή τερματισμός άλλων εφαρμογών</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🎓 Προτεινόμενες Ερωτήσεις</h2>
+            
+            <h3>Μετά την Άσκηση 1:</h3>
+            <ul>
+                <li>Τι συμβαίνει αν βάλουμε αρνητική τιμή;</li>
+                <li>Πώς θα προσθέταμε validation;</li>
+                <li>Που αποθηκεύονται οι σταθερές και γιατί;</li>
+            </ul>
+
+            <h3>Μετά την Άσκηση 2:</h3>
+            <ul>
+                <li>Πώς εμφανίζεται η νέα επιλογή στην HTML;</li>
+                <li>Τι είναι το Jinja2 templating;</li>
+                <li>Πώς θα προσθέταμε περιγραφή για κάθε τύπο;</li>
+            </ul>
+
+            <h3>Μετά την Άσκηση 3:</h3>
+            <ul>
+                <li>Πώς συνδέεται η φόρμα με τη λογική υπολογισμού;</li>
+                <li>Τι άλλες εκπτώσεις θα μπορούσαμε να προσθέσουμε;</li>
+                <li>Πώς θα αποθηκεύαμε τις αιτήσεις;</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Επιπλέον Δραστηριότητες</h2>
+            
+            <h3>Για γρήγορους σπουδαστές:</h3>
+            <ul>
+                <li>Προσθήκη validation στη φόρμα</li>
+                <li>Διαφορετικές τιμές ανά τύπο πιστοποιητικού</li>
+                <li>Προσθήκη ημερομηνίας έκδοσης</li>
+                <li>Υπολογισμός συνολικού κόστους για πολλαπλά πιστοποιητικά</li>
+            </ul>
+
+            <h3>Ομαδικές δραστηριότητες:</h3>
+            <ul>
+                <li>Σχεδιασμός νέων τύπων έκπτωσης</li>
+                <li>Δημιουργία χρηστικότερου UI</li>
+                <li>Προσθήκη υπολογιστή διαφορετικών υπηρεσιών</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📊 Αξιολόγηση</h2>
+            
+            <h3>Κριτήρια επιτυχίας:</h3>
+            <ul>
+                <li>✅ Ολοκλήρωση και των 3 ασκήσεων</li>
+                <li>✅ Κατανόηση της σύνδεσης Python-HTML</li>
+                <li>✅ Ικανότητα εντοπισμού και διόρθωσης απλών σφαλμάτων</li>
+                <li>✅ Εξήγηση της λογικής του υπολογισμού</li>
+            </ul>
+
+            <h3>Ερωτήσεις αξιολόγησης:</h3>
+            <ol>
+                <li>Εξηγήστε πώς περνούν τα δεδομένα από τη φόρμα στο Python</li>
+                <li>Τι είναι οι routes στο Flask;</li>
+                <li>Πώς λειτουργεί το templating system;</li>
+                <li>Τι αλλαγές θα κάνατε για βελτίωση της εφαρμογής;</li>
+            </ol>
+        </div>
+
+        <div class="highlight">
+            <h3>🎉 Επόμενα Βήματα</h3>
+            <p>Μετά από αυτή την άσκηση, οι σπουδαστές είναι έτοιμοι για:</p>
+            <ul>
+                <li>Εισαγωγή σε βάσεις δεδομένων (SQLite)</li>
+                <li>User authentication</li>
+                <li>REST APIs</li>
+                <li>JavaScript και AJAX</li>
+                <li>Deployment στο cloud</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

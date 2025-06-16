@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Εργαστήριο Mermaid - Διαγράμματα για το Δημόσιο</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 3px solid #2196F3;
+        }
+        
+        .header h1 {
+            color: #1976D2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .timer {
+            background: #E3F2FD;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 2px solid #2196F3;
+        }
+        
+        .timer h2 {
+            color: #1976D2;
+            font-size: 1.8em;
+        }
+        
+        .timer-display {
+            font-size: 2em;
+            font-weight: bold;
+            color: #D32F2F;
+            margin: 10px 0;
+        }
+        
+        .section {
+            background: white;
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #2196F3;
+        }
+        
+        .section h2 {
+            color: #1976D2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .section h3 {
+            color: #424242;
+            margin: 15px 0 10px 0;
+        }
+        
+        .code-block {
+            background: #F5F5F5;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #E0E0E0;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        .example {
+            background: #E8F5E8;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+            margin: 15px 0;
+        }
+        
+        .step {
+            background: #FFF3E0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #FF9800;
+        }
+        
+        .step-number {
+            background: #FF9800;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .button {
+            background: #2196F3;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #1976D2;
+        }
+        
+        .button.success {
+            background: #4CAF50;
+        }
+        
+        .button.success:hover {
+            background: #388E3C;
+        }
+        
+        .symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .symbol-card {
+            background: #F8F9FA;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #E0E0E0;
+        }
+        
+        .checklist {
+            background: #E1F5FE;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .checklist h3 {
+            color: #0277BD;
+            margin-bottom: 15px;
+        }
+        
+        .checklist label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        
+        .checklist input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #E0E0E0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #2196F3);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .tip {
+            background: #F3E5F5;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #9C27B0;
+            margin: 15px 0;
+        }
+        
+        .tip::before {
+            content: "💡 ";
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Εργαστήριο Mermaid</h1>
+            <p><strong>Δημιουργία Διαγραμμάτων Ροής για Δημόσιες Υπηρεσίες</strong></p>
+        </div>
+
+        <div class="timer">
+            <h2>⏱️ Χρόνος Εργαστηρίου</h2>
+            <div class="timer-display" id="timer">20:00</div>
+            <button class="button" onclick="startTimer()">Έναρξη</button>
+            <button class="button" onclick="pauseTimer()">Παύση</button>
+            <button class="button" onclick="resetTimer()">Επαναφορά</button>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Στόχος του Εργαστηρίου</h2>
+            <p>Θα μάθετε να δημιουργείτε διαγράμματα ροής για δημόσιες διαδικασίες χρησιμοποιώντας το <strong>Mermaid</strong>, ένα εργαλείο που μετατρέπει κείμενο σε όμορφα διαγράμματα.</p>
+            
+            <div class="tip">
+                <strong>Γιατί είναι χρήσιμο;</strong> Τα διαγράμματα βοηθούν στην κατανόηση πολύπλοκων διαδικασιών και στην επικοινωνία μεταξύ τεχνικών και μη-τεχνικών στελεχών.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Τι είναι το Mermaid;</h2>
+            <p><strong>Mermaid</strong> είναι μια γλώσσα που δημιουργεί διαγράμματα και γραφήματα από κείμενο, παρόμοια με τη Markdown.</p>
+            
+            <h3>Πλεονεκτήματα:</h3>
+            <ul>
+                <li>✅ <strong>Εύκολο:</strong> Γράφεις κώδικα αντί να σχεδιάζεις</li>
+                <li>✅ <strong>Γρήγορο:</strong> Άμεση ενημέρωση διαγραμμάτων</li>
+                <li>✅ <strong>Version Control:</strong> Παρακολούθηση αλλαγών</li>
+                <li>✅ <strong>Συνεργασία:</strong> Εύκολη κοινοποίηση</li>
+            </ul>
+
+            <div class="example">
+                <strong>🌐 Mermaid.live:</strong> Δωρεάν online εργαλείο στο <a href="https://mermaid.live" target="_blank">https://mermaid.live</a> για δημιουργία και προεπισκόπηση διαγραμμάτων.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔤 Βασική Σύνταξη</h2>
+            
+            <div class="symbols-grid">
+                <div class="symbol-card">
+                    <h4>📋 Διαδικασία/Ενέργεια</h4>
+                    <div class="code-block">A[Κείμενο]</div>
+                </div>
+                <div class="symbol-card">
+                    <h4>❓ Απόφαση/Ερώτηση</h4>
+                    <div class="code-block">B{Ερώτηση;}</div>
+                </div>
+                <div class="symbol-card">
+                    <h4>🎯 Έναρξη/Τέλος</h4>
+                    <div class="code-block">C((Τέλος))</div>
+                </div>
+                <div class="symbol-card">
+                    <h4>🗃️ Βάση Δεδομένων</h4>
+                    <div class="code-block">D[(Database)]</div>
+                </div>
+            </div>
+
+            <h3>Συνδέσεις:</h3>
+            <div class="code-block">A --> B          (Απλή σύνδεση)
+A -->|Ναι| B     (Με ετικέτα)
+A -.-> B         (Διακεκομμένη)</div>
+        </div>
+
+        <div class="section">
+            <h2>📝 Απλό Παράδειγμα</h2>
+            <p>Δείτε πώς ένα απλό σενάριο γίνεται διάγραμμα:</p>
+            
+            <div class="code-block">flowchart TD
+    A[Πολίτης κάνει αίτηση] --> B{Έχει δικαιολογητικά;}
+    B -->|Ναι| C[Επεξεργασία αίτησης]
+    B -->|Όχι| D[Επιστροφή για συμπλήρωση]
+    C --> E[Έκδοση εγγράφου]
+    D --> A</div>
+        </div>
+
+        <div class="section">
+            <h2>🏛️ Πρακτική Άσκηση: Πιστοποιητικό Γέννησης</h2>
+            <p><strong>Σενάριο:</strong> Δημιουργήστε διάγραμμα ροής για την έκδοση πιστοποιητικού γέννησης</p>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Ανοίξτε το mermaid.live</strong><br>
+                Πηγαίνετε στο <a href="https://mermaid.live" target="_blank" class="button">🌐 Mermaid.live</a>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Αρχίστε με τη βασική δομή</strong><br>
+                Αντιγράψτε τον παρακάτω κώδικα στο αριστερό τμήμα:
+            </div>
+
+            <div class="code-block">flowchart TD
+    A[Έναρξη] --> B[Τέλος]</div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Προσθέστε τα βήματα της διαδικασίας:</strong>
+            </div>
+
+            <div class="checklist">
+                <h3>📋 Βήματα που πρέπει να συμπεριλάβετε:</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress"></div>
+                </div>
+                <label><input type="checkbox" onchange="updateProgress()"> Πολίτης κάνει αίτηση (online ή δια ζώσης)</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Έλεγχος ταυτότητας</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Αναζήτηση στο μητρώο</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Έλεγχος αν βρέθηκε εγγραφή</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Υπολογισμός παραβόλου (€3 + €2 αν επείγον)</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Πληρωμή</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Έκδοση πιστοποιητικού</label>
+                <label><input type="checkbox" onchange="updateProgress()"> Παράδοση (email ή αυτοπροσώπως)</label>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Προσθέστε αποφάσεις (ρόμβους)</strong><br>
+                Χρησιμοποιήστε σύμβολα {} για ερωτήσεις όπως "Βρέθηκε εγγραφή;" ή "Επείγον;"
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Ελέγξτε το αποτέλεσμα</strong><br>
+                Δείτε το διάγραμμα στο δεξί τμήμα και κάντε τυχόν διορθώσεις
+            </div>
+
+            <div class="tip">
+                <strong>Συμβουλή:</strong> Ξεκινήστε απλά και προσθέτετε λεπτομέρειες σταδιακά. Μην προσπαθήσετε να κάνετε τα πάντα με τη μία!
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>💡 Παράδειγμα Λύσης</h2>
+            <p>Εάν χρειαστείτε βοήθεια, δείτε την παρακάτω λύση:</p>
+            
+            <details>
+                <summary style="cursor: pointer; font-weight: bold; color: #1976D2;">👆 Κλικ για να δείτε την λύση</summary>
+                <div class="code-block" style="margin-top: 15px;">flowchart TD
+A[Πολίτης κάνει αίτηση] --> B{Online ή δια ζώσης;}
+B -->|Online| C[Έλεγχος ταυτότητας online]
+B -->|Δια ζώσης| D[Έλεγχος ταυτότητας στο γκισέ]
+C --> E[Αναζήτηση στο μητρώο]
+D --> E
+E --> F{Βρέθηκε εγγραφή;}
+F -->|Όχι| G[Ενημέρωση πολίτη - Αδυναμία έκδοσης]
+F -->|Ναι| H{Επείγον;}
+H -->|Ναι| I[Υπολογισμός: €3 + €2 = €5]
+H -->|Όχι| J[Υπολογισμός: €3]
+I --> K[Πληρωμή]
+J --> K
+K --> L[Έκδοση πιστοποιητικού]
+L --> M{Τρόπος παράδοσης;}
+M -->|Email| N[Αποστολή PDF]
+M -->|Αυτοπροσώπως| O[Παραλαβή από γκισέ]
+G --> P[Τέλος]
+N --> P
+O --> P</div>
+            </details>
+        </div>
+
+        <div class="section">
+            <h2>🎯 Στόχοι Ολοκλήρωσης</h2>
+            <div class="checklist">
+                <h3>✅ Τι θα έχετε μάθει:</h3>
+                <label><input type="checkbox"> Τι είναι το Mermaid και πώς λειτουργεί</label>
+                <label><input type="checkbox"> Βασική σύνταξη για διαγράμματα ροής</label>
+                <label><input type="checkbox"> Πώς να χρησιμοποιείτε το mermaid.live</label>
+                <label><input type="checkbox"> Δημιουργία διαγράμματος για δημόσια διαδικασία</label>
+                <label><input type="checkbox"> Τεκμηρίωση επιχειρησιακών διαδικασιών</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Επόμενα Βήματα</h2>
+            <ul>
+                <li>🔗 Εξερευνήστε περισσότερους τύπους διαγραμμάτων (Gantt, Entity-Relationship, κ.ά.)</li>
+                <li>📚 Ενσωματώστε το Mermaid στην τεκμηρίωση των έργων σας</li>
+                <li>👥 Μοιραστείτε τη γνώση με τους συναδέλφους σας</li>
+                <li>🏛️ Τεκμηριώστε τις διαδικασίες του οργανισμού σας</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 20 * 60; // 20 minutes in seconds
+        let timerInterval;
+        let isRunning = false;
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    updateTimerDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        alert('⏰ Ο χρόνος τελείωσε! Ελπίζουμε να ολοκληρώσατε την άσκηση.');
+                        isRunning = false;
+                    }
+                }, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            timeLeft = 20 * 60;
+            updateTimerDisplay();
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+            const checked = document.querySelectorAll('.checklist input[type="checkbox"]:checked');
+            const progress = (checked.length / checkboxes.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+
+        // Initialize timer display
+        updateTimerDisplay();
+    </script>
+</body>
+</html>

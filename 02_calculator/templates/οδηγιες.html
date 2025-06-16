@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Οδηγίες για Σπουδαστές - Δήμος Άρτας</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📚 Οδηγίες για Σπουδαστές</h1>
+            <h2>Υπολογιστής Δημοτικών Τελών</h2>
+            <p>Ασκήσεις προγραμματισμού για κατανόηση Flask εφαρμογών</p>
+        </header>
+
+        <main class="main-content">
+            
+            <!-- Εισαγωγή -->
+            <div class="intro-section">
+                <h3>🎯 Στόχος των Ασκήσεων</h3>
+                <p>Μέσα από αυτές τις ασκήσεις θα μάθετε:</p>
+                <ul>
+                    <li>Πως να τροποποιείτε Python μεταβλητές</li>
+                    <li>Πως να προσθέτετε νέα πεδία σε φόρμες</li>
+                    <li>Πως να υλοποιείτε πολύπλοκη λογική υπολογισμών</li>
+                    <li>Πως να συνδέετε Python με HTML templates</li>
+                </ul>
+                <p><strong>⏱️ Συνολικός χρόνος:</strong> Περίπου 20 λεπτά για όλες τις ασκήσεις</p>
+            </div>
+
+            <!-- Άσκηση 1 - Εύκολη -->
+            <div class="exercise-card easy">
+                <div class="exercise-header">
+                    <h3>🟢 Άσκηση 1: Αλλαγή Τιμών (Εύκολη - 5 λεπτά)</h3>
+                    <span class="difficulty">Επίπεδο: Αρχάριος</span>
+                </div>
+                
+                <div class="exercise-content">
+                    <h4>📋 Τι θα κάνετε:</h4>
+                    <p>Θα αλλάξετε τις τιμές του βασικού κόστους και του επείγοντος.</p>
+                    
+                    <h4>🔧 Οδηγίες βήμα-βήμα:</h4>
+                    <ol>
+                        <li>Ανοίξτε το αρχείο <code>app.py</code></li>
+                        <li>Βρείτε τις γραμμές με τις σταθερές (γύρω στη γραμμή 16-17):</li>
+                        <div class="code-block">
+                            <pre>ΒΑΣΙΚΟ_ΚΟΣΤΟΣ = 3.0
+ΚΟΣΤΟΣ_ΕΠΕΙΓΟΝ = 2.0</pre>
+                        </div>
+                        <li>Αλλάξτε τις τιμές σε:</li>
+                        <div class="code-block">
+                            <pre>ΒΑΣΙΚΟ_ΚΟΣΤΟΣ = 4.0
+ΚΟΣΤΟΣ_ΕΠΕΙΓΟΝ = 3.0</pre>
+                        </div>
+                        <li>Αποθηκεύστε το αρχείο</li>
+                        <li>Επανεκκινήστε τον server και δοκιμάστε τον υπολογιστή</li>
+                    </ol>
+                    
+                    <h4>✅ Αποτέλεσμα:</h4>
+                    <p>Τώρα το βασικό κόστος θα είναι €4.00 και το επείγον €7.00 συνολικά!</p>
+                </div>
+            </div>
+
+            <!-- Άσκηση 2 - Μέτρια -->
+            <div class="exercise-card medium">
+                <div class="exercise-header">
+                    <h3>🟡 Άσκηση 2: Νέος Τύπος Πιστοποιητικού (Μέτρια - 7 λεπτά)</h3>
+                    <span class="difficulty">Επίπεδο: Ενδιάμεσος</span>
+                </div>
+                
+                <div class="exercise-content">
+                    <h4>📋 Τι θα κάνετε:</h4>
+                    <p>Θα προσθέσετε έναν νέο τύπο πιστοποιητικού στη λίστα επιλογών.</p>
+                    
+                    <h4>🔧 Οδηγίες βήμα-βήμα:</h4>
+                    <ol>
+                        <li>Στο αρχείο <code>app.py</code>, βρείτε τη λίστα <code>ΤΥΠΟΙ_ΠΙΣΤΟΠΟΙΗΤΙΚΩΝ</code> (γύρω στη γραμμή 20-26)</li>
+                        <li>Προσθέστε έναν νέο τύπο, π.χ. "Φορολογικής Ενημερότητας":</li>
+                        <div class="code-block">
+                            <pre>ΤΥΠΟΙ_ΠΙΣΤΟΠΟΙΗΤΙΚΩΝ = [
+    'Γέννησης',
+    'Θανάτου', 
+    'Οικογενειακής Κατάστασης',
+    'Σπουδών',
+    'Στρατολογικής Κατάστασης',
+    'Φορολογικής Ενημερότητας'  # ← Νέος τύπος
+]</pre>
+                        </div>
+                        <li>Αποθηκεύστε και δοκιμάστε</li>
+                    </ol>
+                    
+                    <h4>✅ Αποτέλεσμα:</h4>
+                    <p>Θα δείτε τον νέο τύπο πιστοποιητικού στο dropdown menu!</p>
+                    
+                    <h4>🚀 Μπόνους:</h4>
+                    <p>Προσθέστε 2-3 ακόμη τύπους πιστοποιητικών της επιλογής σας!</p>
+                </div>
+            </div>
+
+            <!-- Άσκηση 3 - Δύσκολη -->
+            <div class="exercise-card hard">
+                <div class="exercise-header">
+                    <h3>🔴 Άσκηση 3: Έκπτωση για Συνταξιούχους (Δύσκολη - 8 λεπτά)</h3>
+                    <span class="difficulty">Επίπεδο: Προχωρημένος</span>
+                </div>
+                
+                <div class="exercise-content">
+                    <h4>📋 Τι θα κάνετε:</h4>
+                    <p>Θα προσθέσετε έκπτωση 50% για συνταξιούχους με νέο πεδίο στη φόρμα.</p>
+                    
+                    <h4>🔧 Οδηγίες βήμα-βήμα:</h4>
+                    
+                    <h5>Μέρος Α: Αλλαγή στο app.py</h5>
+                    <ol>
+                        <li>Στη συνάρτηση <code>υπολογισμος_κοστους()</code>, μετά τη γραμμή που παίρνει το "επειγον", προσθέστε:</li>
+                        <div class="code-block">
+                            <pre>συνταξιουχος = request.form.get('συνταξιουχος') == 'ναι'</pre>
+                        </div>
+                        
+                        <li>Μετά τον υπολογισμό του επείγοντος, προσθέστε την έκπτωση:</li>
+                        <div class="code-block">
+                            <pre># Εφαρμογή έκπτωσης συνταξιούχου
+if συνταξιουχος:
+    συνολικο_κοστος = συνολικο_κοστος * 0.5  # 50% έκπτωση
+    περιγραφη_υπολογισμου += " - Έκπτωση συνταξιούχου 50%"</pre>
+                        </div>
+                        
+                        <li>Στέλνετε τη μεταβλητή στο template:</li>
+                        <div class="code-block">
+                            <pre>return render_template('αποτελεσμα.html',
+                         ...
+                         συνταξιουχος=συνταξιουχος)  # ← Προσθήκη</pre>
+                        </div>
+                    </ol>
+                    
+                    <h5>Μέρος Β: Αλλαγή στο calculator.html</h5>
+                    <ol>
+                        <li>Μετά το πεδίο "Επείγον", προσθέστε νέο πεδίο:</li>
+                        <div class="code-block">
+                            <pre>&lt;!-- Συνταξιούχος --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label&gt;👴 Συνταξιούχος:&lt;/label&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;label class="radio-label"&gt;
+            &lt;input type="radio" name="συνταξιουχος" value="οχι" checked&gt;
+            &lt;span&gt;Όχι&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label class="radio-label"&gt;
+            &lt;input type="radio" name="συνταξιουχος" value="ναι"&gt;
+            &lt;span&gt;Ναι - Έκπτωση 50%&lt;/span&gt;
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+                        </div>
+                    </ol>
+                    
+                    <h5>Μέρος Γ: Αλλαγή στο αποτελεσμα.html</h5>
+                    <ol>
+                        <li>Προσθέστε νέα γραμμή στα στοιχεία αίτησης:</li>
+                        <div class="code-block">
+                            <pre>&lt;div class="detail-row"&gt;
+    &lt;span class="label"&gt;👴 Συνταξιούχος:&lt;/span&gt;
+    &lt;span class="value"&gt;
+        {% if συνταξιουχος %}
+            &lt;span class="badge discount"&gt;Ναι (Έκπτωση 50%)&lt;/span&gt;
+        {% else %}
+            &lt;span class="badge normal"&gt;Όχι&lt;/span&gt;
+        {% endif %}
+    &lt;/span&gt;
+&lt;/div&gt;</pre>
+                        </div>
+                    </ol>
+                    
+                    <h4>✅ Αποτέλεσμα:</h4>
+                    <p>Οι συνταξιούχοι θα πληρώνουν το μισό ποσό για όλα τα πιστοποιητικά!</p>
+                </div>
+            </div>
+
+            <!-- Επιπλέον προκλήσεις -->
+            <div class="bonus-section">
+                <h3>🚀 Επιπλέον Προκλήσεις (Προαιρετικές)</h3>
+                <div class="challenge-list">
+                    <div class="challenge-item">
+                        <h4>💡 Πρόκληση 1: Διαφορετικές τιμές ανά τύπο</h4>
+                        <p>Κάντε κάθε τύπο πιστοποιητικού να έχει διαφορετική τιμή</p>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <h4>💡 Πρόκληση 2: Πολλαπλά πιστοποιητικά</h4>
+                        <p>Επιτρέψτε στους χρήστες να επιλέξουν ποσότητα πιστοποιητικών</p>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <h4>💡 Πρόκληση 3: Αποθήκευση αιτήσεων</h4>
+                        <p>Αποθηκεύστε τις αιτήσεις σε αρχείο ή βάση δεδομένων</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Χρήσιμες συμβουλές -->
+            <div class="tips-section">
+                <h3>💡 Χρήσιμες Συμβουλές</h3>
+                <ul>
+                    <li><strong>Αποθήκευση:</strong> Πάντα αποθηκεύετε τα αρχεία πριν δοκιμάσετε αλλαγές</li>
+                    <li><strong>Επανεκκίνηση:</strong> Μετά από αλλαγές στο Python, επανεκκινήστε τον server (Ctrl+C και python app.py)</li>
+                    <li><strong>Debugging:</strong> Αν κάτι δεν δουλεύει, ελέγξτε το terminal για μηνύματα σφάλματος</li>
+                    <li><strong>Backup:</strong> Φτιάξτε αντίγραφα ασφαλείας πριν κάνετε μεγάλες αλλαγές</li>
+                </ul>
+            </div>
+
+            <!-- Πλοήγηση -->
+            <div class="navigation">
+                <a href="{{ url_for('αρχική_σελίδα') }}" class="btn btn-primary">
+                    🧮 Πίσω στον Υπολογιστή
+                </a>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Δήμος Άρτας - Εκπαιδευτικό Υλικό</p>
+            <p>Καλή επιτυχία στις ασκήσεις! 🚀</p>
+        </footer>
+    </div>
+</body>
+</html> 

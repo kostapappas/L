@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Αποτέλεσμα Υπολογισμού - Δήμος Άρτας</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>✅ Αποτέλεσμα Υπολογισμού</h1>
+            <h2>Δήμος Άρτας</h2>
+        </header>
+
+        <main class="main-content">
+            <div class="result-card">
+                <div class="result-header">
+                    <h3>📄 Λεπτομέρειες Αίτησης</h3>
+                </div>
+                
+                <div class="result-details">
+                    <div class="detail-row">
+                        <span class="label">👤 Όνομα:</span>
+                        <span class="value">{{ ονομα }}</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="label">📋 Τύπος Πιστοποιητικού:</span>
+                        <span class="value">{{ τυπος }}</span>
+                    </div>
+                    
+                    <div class="detail-row">
+                        <span class="label">⚡ Επείγον:</span>
+                        <span class="value">
+                            {% if επειγον %}
+                                <span class="badge urgent">Ναι</span>
+                            {% else %}
+                                <span class="badge normal">Όχι</span>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="calculation-card">
+                <div class="calculation-header">
+                    <h3>🧮 Ανάλυση Κόστους</h3>
+                </div>
+                
+                <div class="calculation-details">
+                    <p class="calculation-breakdown">{{ περιγραφη }}</p>
+                    
+                    <div class="total-cost">
+                        <span class="total-label">💰 Συνολικό Κόστος:</span>
+                        <span class="total-amount">€{{ "%.2f"|format(κοστος) }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Επόμενα βήματα -->
+            <div class="next-steps">
+                <h4>📋 Επόμενα Βήματα</h4>
+                <ol>
+                    <li>Επισκεφτείτε το δημαρχείο με τα απαραίτητα δικαιολογητικά</li>
+                    <li>Προσκομίστε ταυτότητα ή διαβατήριο</li>
+                    <li>Πληρώστε το ποσό των €{{ "%.2f"|format(κοστος) }}</li>
+                    <li>
+                        {% if επειγον %}
+                            Παραλάβετε το πιστοποιητικό εντός 24 ωρών
+                        {% else %}
+                            Παραλάβετε το πιστοποιητικό εντός 3-5 εργάσιμων ημερών
+                        {% endif %}
+                    </li>
+                </ol>
+            </div>
+
+            <!-- Κουμπιά πλοήγησης -->
+            <div class="navigation">
+                <a href="{{ url_for('αρχική_σελίδα') }}" class="btn btn-primary">
+                    🔄 Νέος Υπολογισμός
+                </a>
+                <a href="{{ url_for('σελιδα_οδηγιων') }}" class="btn btn-secondary">
+                    📚 Οδηγίες για Σπουδαστές
+                </a>
+            </div>
+
+            <!-- Πληροφορίες επικοινωνίας -->
+            <div class="contact-info">
+                <h4>📞 Πληροφορίες</h4>
+                <p><strong>Τηλέφωνο:</strong> +30 26810 35000</p>
+                <p><strong>Email:</strong> info@arta.gr</p>
+                <p><strong>Ωράριο:</strong> Δευτέρα - Παρασκευή, 08:00 - 15:00</p>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Δήμος Άρτας - Υπολογιστής Δημοτικών Τελών</p>
+            <p>Εκπαιδευτικό παράδειγμα Flask εφαρμογής</p>
+        </footer>
+    </div>
+</body>
+</html> 

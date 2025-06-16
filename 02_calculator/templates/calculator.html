@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Υπολογιστής Δημοτικών Τελών - Δήμος Άρτας</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🧮 Υπολογιστής Δημοτικών Τελών</h1>
+            <h2>Δήμος Άρτας</h2>
+            <p>Υπολογίστε το κόστος έκδοσης πιστοποιητικών</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Εμφάνιση μηνύματος σφάλματος αν υπάρχει -->
+            {% if σφαλμα %}
+            <div class="alert alert-error">
+                <strong>❌ Σφάλμα:</strong> {{ σφαλμα }}
+            </div>
+            {% endif %}
+
+            <div class="calculator-form">
+                <h3>📋 Στοιχεία Αίτησης</h3>
+                
+                <form method="POST" action="{{ url_for('υπολογισμος_κοστους') }}">
+                    
+                    <!-- Όνομα πολίτη -->
+                    <div class="form-group">
+                        <label for="ονομα">👤 Όνομα και Επώνυμο:</label>
+                        <input type="text" 
+                               id="ονομα" 
+                               name="ονομα" 
+                               placeholder="π.χ. Γιάννης Παπαδόπουλος"
+                               required>
+                    </div>
+
+                    <!-- Τύπος πιστοποιητικού -->
+                    <div class="form-group">
+                        <label for="τυπος_πιστοποιητικου">📄 Τύπος Πιστοποιητικού:</label>
+                        <select id="τυπος_πιστοποιητικου" name="τυπος_πιστοποιητικου" required>
+                            <option value="">-- Επιλέξτε τύπο --</option>
+                            {% for τυπος in τυποι %}
+                            <option value="{{ τυπος }}">{{ τυπος }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <!-- Επείγον -->
+                    <div class="form-group">
+                        <label>⚡ Επείγουσα έκδοση:</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="επειγον" value="οχι" checked>
+                                <span>🐌 Όχι - Κανονική έκδοση (€3.00)</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="επειγον" value="ναι">
+                                <span>⚡ Ναι - Επείγουσα έκδοση (+€2.00)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Κουμπί υπολογισμού -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            🧮 Υπολογισμός Κόστους
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Πληροφορίες κόστους -->
+            <div class="info-box">
+                <h4>💰 Πληροφορίες Κόστους</h4>
+                <ul>
+                    <li><strong>Βασικό κόστος:</strong> €3.00 για όλα τα πιστοποιητικά</li>
+                    <li><strong>Επείγον:</strong> +€2.00 επιπλέον (Σύνολο: €5.00)</li>
+                    <li><strong>Τρόπος πληρωμής:</strong> Μετρητά, κάρτα ή τραπεζική κατάθεση</li>
+                </ul>
+            </div>
+
+            <!-- Link για οδηγίες -->
+            <div class="navigation">
+                <a href="{{ url_for('σελιδα_οδηγιων') }}" class="btn btn-secondary">
+                    📚 Οδηγίες για Σπουδαστές
+                </a>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Δήμος Άρτας - Υπολογιστής Δημοτικών Τελών</p>
+            <p>Εκπαιδευτικό παράδειγμα Flask εφαρμογής</p>
+        </footer>
+    </div>
+</body>
+</html> 
