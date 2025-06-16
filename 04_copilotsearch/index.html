@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VS Code & GitHub Copilot - Οδηγός</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #3b82f6;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .shortcut {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            background: #f8f9fa;
+            border-left: 4px solid #3b82f6;
+            margin-bottom: 8px;
+            border-radius: 5px;
+        }
+        .key {
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .tip {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+            margin: 15px 0;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Visual Studio Code & GitHub Copilot</h1>
+        <p style="text-align: center; font-size: 1.2em; color: #666;">Οδηγός Βέλτιστων Πρακτικών για Developers</p>
+
+                 <div class="section">
+             <h2>⌨️ Essential VS Code Shortcuts</h2>
+             <p>Τα βασικά shortcuts που θα σου αλλάξουν τη ζωή:</p>
+             
+             <h3>🔍 Navigation & Search</h3>
+             <div class="shortcut">
+                 <span><strong>Command Palette</strong> - Πρόσβαση σε όλες τις εντολές</span>
+                 <span class="key">Cmd + Shift + P</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Quick Open</strong> - Άνοιγμα αρχείων γρήγορα</span>
+                 <span class="key">Cmd + P</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Go to Symbol</strong> - Εύρεση functions, classes στο αρχείο</span>
+                 <span class="key">Cmd + Shift + O</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Go to Line</strong> - Μετάβαση σε συγκεκριμένη γραμμή</span>
+                 <span class="key">Ctrl + G</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Find & Replace</strong> - Εύρεση και αντικατάσταση κειμένου</span>
+                 <span class="key">Cmd + F</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Find in Files</strong> - Αναζήτηση σε όλα τα αρχεία</span>
+                 <span class="key">Cmd + Shift + F</span>
+             </div>
+             
+             <h3>✏️ Editing Magic</h3>
+             <div class="shortcut">
+                 <span><strong>Multiple Cursors</strong> - Επεξεργασία πολλών σημείων ταυτόχρονα</span>
+                 <span class="key">Alt + Click</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Select Next Occurrence</strong> - Επιλογή επόμενης εμφάνισης λέξης</span>
+                 <span class="key">Cmd + D</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Select All Occurrences</strong> - Επιλογή όλων των εμφανίσεων</span>
+                 <span class="key">Cmd + Shift + L</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Move Line Up/Down</strong> - Μετακίνηση γραμμής πάνω/κάτω</span>
+                 <span class="key">Alt + ↑/↓</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Copy Line Up/Down</strong> - Αντιγραφή γραμμής πάνω/κάτω</span>
+                 <span class="key">Shift + Alt + ↑/↓</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Comment Toggle</strong> - Προσθήκη/αφαίρεση σχολίων</span>
+                 <span class="key">Cmd + /</span>
+             </div>
+             
+             <h3>🎯 Layout & Views</h3>
+             <div class="shortcut">
+                 <span><strong>Toggle Sidebar</strong> - Εμφάνιση/απόκρυψη sidebar</span>
+                 <span class="key">Cmd + B</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Toggle Terminal</strong> - Εμφάνιση/απόκρυψη terminal</span>
+                 <span class="key">Ctrl + `</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Split Editor</strong> - Διαίρεση του editor σε παράθυρα</span>
+                 <span class="key">Cmd + \</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Zen Mode</strong> - Πλήρης εστίαση στον κώδικα</span>
+                 <span class="key">Cmd + K Z</span>
+             </div>
+             
+             <h3>🔧 Code Intelligence</h3>
+             <div class="shortcut">
+                 <span><strong>Go to Definition</strong> - Πήγαινε στον ορισμό</span>
+                 <span class="key">F12</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Peek Definition</strong> - Γρήγορη προεπισκόπηση ορισμού</span>
+                 <span class="key">Alt + F12</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Find All References</strong> - Εύρεση όλων των χρήσεων</span>
+                 <span class="key">Shift + F12</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Rename Symbol</strong> - Μετονομασία σε όλο το project</span>
+                 <span class="key">F2</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>IntelliSense</strong> - Εμφάνιση προτάσεων</span>
+                 <span class="key">Ctrl + Space</span>
+             </div>
+         </div>
+
+                 <div class="section">
+             <h2>🤖 GitHub Copilot Best Practices</h2>
+             
+             <div class="tip">
+                 <strong>💡 Γεγονός:</strong> Developers με Copilot είναι 55% πιο γρήγοροι και 88% πιο παραγωγικοί!
+             </div>
+             
+             <h3>🎯 Τι κάνει ΤΈΛΕΙΑ το Copilot:</h3>
+             <div style="background: #dcfce7; padding: 15px; border-radius: 8px; border-left: 4px solid #22c55e; margin: 15px 0;">
+                 <ul>
+                     <li><strong>Boilerplate Code:</strong> Γρήγορη δημιουργία βασικών δομών</li>
+                     <li><strong>Unit Tests:</strong> Αυτόματη γραφή comprehensive tests</li>
+                     <li><strong>Documentation:</strong> JSDoc, comments και README files</li>
+                     <li><strong>RegEx & Algorithms:</strong> Σύνθετα patterns και optimized algorithms</li>
+                     <li><strong>API Integration:</strong> HTTP requests, error handling, authentication</li>
+                     <li><strong>Code Explanation:</strong> Εξήγηση legacy ή πολύπλοκου κώδικα</li>
+                 </ul>
+             </div>
+             
+             <h3>⚠️ Τι ΔΕΝ κάνει καλά:</h3>
+             <div style="background: #fee2e2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444; margin: 15px 0;">
+                 <ul>
+                     <li><strong>Business Logic:</strong> Δεν καταλαβαίνει τις ανάγκες του project</li>
+                     <li><strong>Security:</strong> Μπορεί να δημιουργήσει vulnerable κώδικα</li>
+                     <li><strong>Performance:</strong> Δεν optimizes για real-world constraints</li>
+                     <li><strong>Architecture:</strong> Δεν σχεδιάζει system-level αρχιτεκτονική</li>
+                 </ul>
+             </div>
+             
+             <h3>🔥 Copilot Chat Slash Commands:</h3>
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                     <h4 style="color: #3b82f6; margin-bottom: 8px;">/explain</h4>
+                     <p>Εξήγηση κώδικα - τι κάνει και πώς</p>
+                     <code style="font-size: 0.8em;">/explain what does this function do?</code>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                     <h4 style="color: #3b82f6; margin-bottom: 8px;">/fix</h4>
+                     <p>Διόρθωση bugs και προβλημάτων</p>
+                     <code style="font-size: 0.8em;">/fix the error in this code</code>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                     <h4 style="color: #3b82f6; margin-bottom: 8px;">/tests</h4>
+                     <p>Δημιουργία comprehensive unit tests</p>
+                     <code style="font-size: 0.8em;">/tests create tests for this class</code>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                     <h4 style="color: #3b82f6; margin-bottom: 8px;">/doc</h4>
+                     <p>Προσθήκη documentation και comments</p>
+                     <code style="font-size: 0.8em;">/doc add JSDoc comments</code>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                     <h4 style="color: #3b82f6; margin-bottom: 8px;">/optimize</h4>
+                     <p>Performance optimization του κώδικα</p>
+                     <code style="font-size: 0.8em;">/optimize this algorithm for speed</code>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                     <h4 style="color: #3b82f6; margin-bottom: 8px;">/generate</h4>
+                     <p>Δημιουργία κώδικα από περιγραφή</p>
+                     <code style="font-size: 0.8em;">/generate REST API for users</code>
+                 </div>
+             </div>
+             
+             <h3>🎯 Pro Context Tips:</h3>
+             <div class="tip">
+                 <strong>1. Κράτα σχετικά αρχεία ανοιχτά:</strong><br>
+                 Το Copilot χρησιμοποιεί τα ανοιχτά αρχεία για context. Άνοιξε models, components, utilities που σχετίζονται.
+             </div>
+             
+             <div class="tip">
+                 <strong>2. Γράψε descriptive top-level comments:</strong><br>
+                 <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; margin: 8px 0;">
+// Create a user authentication system with:<br>
+// - Email/password login<br>
+// - JWT token management<br>  
+// - Password reset functionality<br>
+// - Role-based permissions
+                 </div>
+             </div>
+             
+             <div class="tip">
+                 <strong>3. Χρησιμοποίησε meaningful names:</strong><br>
+                 ❌ <code>function foo(x) { }</code><br>
+                 ✅ <code>function calculateMonthlyPayment(loanAmount) { }</code>
+             </div>
+             
+             <div class="tip">
+                 <strong>4. Χρησιμοποίησε @ participants:</strong><br>
+                 • <code>@workspace</code> - Context από όλο το project<br>
+                 • <code>@vscode</code> - Βοήθεια με το VS Code<br>
+                 • <code>@terminal</code> - Command line assistance
+             </div>
+             
+             <h3>⚡ Copilot Shortcuts:</h3>
+             <div class="shortcut">
+                 <span><strong>Accept Suggestion</strong> - Αποδοχή πρότασης</span>
+                 <span class="key">Tab</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>View Alternative Suggestions</strong> - Εναλλακτικές προτάσεις</span>
+                 <span class="key">Ctrl + Enter</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Inline Chat</strong> - Chat μέσα στον editor</span>
+                 <span class="key">Cmd + I</span>
+             </div>
+             
+             <div class="shortcut">
+                 <span><strong>Copilot Chat Panel</strong> - Άνοιγμα chat panel</span>
+                 <span class="key">Cmd + Shift + I</span>
+             </div>
+         </div>
+
+                 <div class="section">
+             <h2>💬 Prompt Engineering Masterclass</h2>
+             
+             <div class="tip">
+                 <strong>🧠 Κλειδί:</strong> Το Copilot είναι σαν έναν talented junior developer - όσο πιο συγκεκριμένος και σαφής είσαι, τόσο καλύτερα αποτελέσματα παίρνεις!
+             </div>
+             
+             <h3>📝 Οι 5 Χρυσοί Κανόνες του Prompting:</h3>
+             
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 20px 0;">
+                 <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #3b82f6;">
+                     <h4 style="color: #3b82f6;">1️⃣ Start General → Get Specific</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+❌ "Write a function"<br><br>
+✅ "Write a function that validates user emails:<br>
+- Takes email string as parameter<br>
+- Returns {isValid: boolean, errors: string[]}<br>
+- Checks format, domain, length<br>
+- Provides Greek error messages"
+                     </div>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #10b981;">
+                     <h4 style="color: #10b981;">2️⃣ Give Examples</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+"Create a date formatter:<br><br>
+Examples:<br>
+formatDate('2024-01-15') → '15 Ιαν 2024'<br>
+formatDate('2024-12-25') → '25 Δεκ 2024'<br>
+formatDate('invalid') → 'Άκυρη ημερομηνία'"
+                     </div>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #f59e0b;">
+                     <h4 style="color: #f59e0b;">3️⃣ Break Complex Tasks</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+Αντί: "Create complete e-shop"<br><br>
+Κάνε:<br>
+1. "Create Product model"<br>
+2. "Create ProductService"<br>
+3. "Create ProductController"<br>
+4. "Add validation logic"
+                     </div>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #ef4444;">
+                     <h4 style="color: #ef4444;">4️⃣ Avoid Ambiguity</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+❌ "What does this do?"<br>
+❌ "Fix this"<br>
+❌ "Make it better"<br><br>
+✅ "What does the calculateTax() function do?"<br>
+✅ "Fix the null pointer error in line 25"<br>
+✅ "Optimize this for better performance"
+                     </div>
+                 </div>
+                 
+                 <div style="background: white; padding: 15px; border-radius: 10px; border: 2px solid #8b5cf6;">
+                     <h4 style="color: #8b5cf6;">5️⃣ Set Context</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+"I'm building a React app with TypeScript and Tailwind CSS.<br><br>
+Create a responsive product card component that:<br>
+- Shows image, title, price<br>
+- Has add to cart button<br>
+- Follows accessibility best practices"
+                     </div>
+                 </div>
+             </div>
+             
+             <h3>🎭 Advanced Prompting Techniques:</h3>
+             
+             <div class="tip">
+                 <strong>Role Playing Technique:</strong><br>
+                 <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; margin: 8px 0;">
+"Act as a senior React developer who prioritizes performance and accessibility.<br>
+Review this component and suggest improvements with explanations."
+                 </div>
+             </div>
+             
+             <div class="tip">
+                 <strong>Constraint-Based Prompting:</strong><br>
+                 <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; margin: 8px 0;">
+"Create a sorting algorithm with these constraints:<br>
+- Don't use built-in sort() method<br>
+- Must be stable sort<br>
+- Optimize for readability over performance<br>
+- Add comments in Greek"
+                 </div>
+             </div>
+             
+             <div class="tip">
+                 <strong>Step-by-Step Template:</strong><br>
+                 <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; margin: 8px 0;">
+"Explain how to implement JWT authentication:<br>
+1. Install necessary dependencies<br>
+2. Create JWT middleware<br>
+3. Implement login/logout endpoints<br>
+4. Add route protection<br>
+5. Handle token refresh"
+                 </div>
+             </div>
+             
+             <h3>🔥 Proven Prompt Templates:</h3>
+             
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin: 20px 0;">
+                 <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                     <h4>🐛 Debugging Template</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+"I'm getting this error: [ERROR_MESSAGE]<br><br>
+In this [LANGUAGE] code:<br>
+[PASTE CODE]<br><br>
+Context: [WHAT YOU'RE TRYING TO DO]<br><br>
+Help me:<br>
+1. Fix the error<br>
+2. Explain why it happened<br>
+3. Prevent similar issues"
+                     </div>
+                 </div>
+                 
+                 <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #22c55e;">
+                     <h4>📚 Learning Template</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+"Explain [CONCEPT] in simple terms:<br><br>
+- What is it and why useful?<br>
+- Show basic example<br>
+- Common use cases<br>
+- Best practices<br>
+- What to avoid<br><br>
+Assume I know [YOUR_LEVEL] but new to this."
+                     </div>
+                 </div>
+                 
+                 <div style="background: #fef3c7; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                     <h4>🔍 Code Review Template</h4>
+                     <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; font-size: 0.8em; margin: 8px 0;">
+"Review this [LANGUAGE] code for:<br><br>
+- Bugs and potential issues<br>
+- Performance improvements<br>
+- Best practices violations<br>
+- Security vulnerabilities<br>
+- Code readability<br><br>
+[PASTE CODE]<br><br>
+Provide specific suggestions with examples."
+                     </div>
+                 </div>
+             </div>
+             
+             <h3>⚡ Quick Wins & Pro Tips:</h3>
+             <div style="background: #dcfce7; padding: 15px; border-radius: 8px; border-left: 4px solid #22c55e; margin: 15px 0;">
+                 <ul>
+                     <li><strong>Be specific about tech stack:</strong> "React with TypeScript" > "React"</li>
+                     <li><strong>Mention your level:</strong> "I'm a beginner" vs "I'm experienced"</li>
+                     <li><strong>Ask for explanations:</strong> "Also explain WHY this approach works"</li>
+                     <li><strong>Request alternatives:</strong> "Show me 3 different approaches"</li>
+                     <li><strong>Set constraints:</strong> "Without using external libraries"</li>
+                     <li><strong>Ask for trade-offs:</strong> "What are the pros and cons?"</li>
+                 </ul>
+             </div>
+         </div>
+
+        <div class="section">
+            <h2>⚡ Productivity Workflow</h2>
+            
+            <h3>Daily Setup:</h3>
+            <ol>
+                <li>Άνοιξε VS Code και το project workspace</li>
+                <li>Έλεγξε git status: <code>git status</code></li>
+                <li>Pull τις τελευταίες αλλαγές: <code>git pull</code></li>
+                <li>Ξεκίνα development server</li>
+                <li>Κλείσε περιττά tabs για καλύτερο focus</li>
+            </ol>
+            
+            <h3>Essential Extensions:</h3>
+            <ul>
+                <li><strong>GitHub Copilot</strong> - AI coding assistant</li>
+                <li><strong>Prettier</strong> - Code formatting</li>
+                <li><strong>ESLint</strong> - Code linting</li>
+                <li><strong>GitLens</strong> - Enhanced Git capabilities</li>
+                <li><strong>Live Server</strong> - Local development server</li>
+                <li><strong>Auto Rename Tag</strong> - HTML tag renaming</li>
+            </ul>
+            
+            <div class="tip">
+                <strong>⚠️ Προσοχή:</strong> Μην εγκαταστήσεις πάρα πολλά extensions - μπορούν να επιβραδύνουν το VS Code!
+            </div>
+        </div>
+
+                 <div class="section">
+             <h2>🎯 Advanced Productivity Hacks</h2>
+             
+             <h3>⚙️ Essential VS Code Settings (settings.json):</h3>
+             <div style="background: #2d3748; color: #e2e8f0; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 0.9em;">
+{<br>
+&nbsp;&nbsp;// Auto-save & formatting<br>
+&nbsp;&nbsp;"files.autoSave": "afterDelay",<br>
+&nbsp;&nbsp;"files.autoSaveDelay": 1000,<br>
+&nbsp;&nbsp;"editor.formatOnSave": true,<br>
+&nbsp;&nbsp;"editor.formatOnPaste": true,<br>
+&nbsp;&nbsp;"editor.codeActionsOnSave": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"source.fixAll.eslint": true,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"source.organizeImports": true<br>
+&nbsp;&nbsp;},<br><br>
+&nbsp;&nbsp;// Font & appearance<br>
+&nbsp;&nbsp;"editor.fontFamily": "Fira Code, Consolas, monospace",<br>
+&nbsp;&nbsp;"editor.fontLigatures": true,<br>
+&nbsp;&nbsp;"editor.fontSize": 14,<br>
+&nbsp;&nbsp;"editor.lineHeight": 1.5,<br><br>
+&nbsp;&nbsp;// Copilot optimization<br>
+&nbsp;&nbsp;"github.copilot.enable": {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"*": true,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"plaintext": false,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;"markdown": true<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;"editor.inlineSuggest.enabled": true,<br>
+&nbsp;&nbsp;"editor.suggestOnTriggerCharacters": true<br>
+}
+             </div>
+             
+             <h3>🔥 Pro Developer Workflow:</h3>
+             
+             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin: 20px 0;">
+                 <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                     <h4>🌅 Morning Routine (5 λεπτά)</h4>
+                     <ol style="font-size: 0.9em;">
+                         <li>Άνοιξε VS Code workspace</li>
+                         <li><code>git pull origin main</code></li>
+                         <li>Κλείσε περιττά tabs</li>
+                         <li>Έλεγξε για extension updates</li>
+                         <li>Ξεκίνα dev server</li>
+                     </ol>
+                 </div>
+                 
+                 <div style="background: #f0fdf4; padding: 15px; border-radius: 8px; border-left: 4px solid #22c55e;">
+                     <h4>💻 Coding Session</h4>
+                     <ol style="font-size: 0.9em;">
+                         <li>Γράψε TODO comments πρώτα</li>
+                         <li>Χρησιμοποίησε Copilot για boilerplate</li>
+                         <li>Review κάθε AI suggestion</li>
+                         <li>Test frequently</li>
+                         <li>Commit often με clear messages</li>
+                     </ol>
+                 </div>
+                 
+                 <div style="background: #fef3c7; padding: 15px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                     <h4>🎯 End of Day (3 λεπτά)</h4>
+                     <ol style="font-size: 0.9em;">
+                         <li>Push όλες τις αλλαγές</li>
+                         <li>Κλείσε όλα τα tabs</li>
+                         <li>Backup settings/snippets</li>
+                         <li>Plan αυριανά tasks</li>
+                         <li>Update learning notes</li>
+                     </ol>
+                 </div>
+             </div>
+             
+             <h3>🚀 GitHub Copilot Power Tips:</h3>
+             
+             <div class="tip">
+                 <strong>🔄 Iterative Prompting:</strong><br>
+                 Μη σταματάς στην πρώτη απάντηση! Ρώτα:<br>
+                 • "Can you make this more performant?"<br>
+                 • "Show me a more functional approach"<br>
+                 • "Add error handling to this"<br>
+                 • "Make this more testable"
+             </div>
+             
+             <div class="tip">
+                 <strong>🎭 Expert Mode:</strong><br>
+                 <div style="background: #2d3748; color: #e2e8f0; padding: 10px; border-radius: 5px; font-family: monospace; margin: 8px 0;">
+"Act as a senior [LANGUAGE] developer with 10+ years experience.<br>
+Review this code following industry best practices and suggest improvements."
+                 </div>
+             </div>
+             
+             <div class="tip">
+                 <strong>⚡ Quick Learning:</strong><br>
+                 Όταν δεις κάτι νέο στις προτάσεις, ρώτα αμέσως:<br>
+                 • "/explain why did you use this pattern?"<br>
+                 • "What are the benefits of this approach?"<br>
+                 • "When should I avoid this technique?"
+             </div>
+             
+             <h3>📊 Track Your Progress:</h3>
+             <div style="background: #dcfce7; padding: 15px; border-radius: 8px; border-left: 4px solid #22c55e; margin: 15px 0;">
+                 <h4>Μέτρα την πρόοδό σου:</h4>
+                 <ul>
+                     <li><strong>Lines of code per hour:</strong> Πόσο γρήγορα γράφεις</li>
+                     <li><strong>Copilot acceptance rate:</strong> Ποιότητα προτάσεων</li>
+                     <li><strong>Debugging time:</strong> Χρόνος επίλυσης προβλημάτων</li>
+                     <li><strong>New shortcuts learned:</strong> 2-3 ανά εβδομάδα</li>
+                     <li><strong>Code quality score:</strong> ESLint warnings/errors</li>
+                 </ul>
+             </div>
+             
+             <h3>⚠️ Common Pitfalls να Αποφύγεις:</h3>
+             <div style="background: #fee2e2; padding: 15px; border-radius: 8px; border-left: 4px solid #ef4444; margin: 15px 0;">
+                 <ul>
+                     <li><strong>Over-reliance on AI:</strong> Μάθε τα fundamentals πρώτα</li>
+                     <li><strong>Accepting without review:</strong> Πάντα έλεγχε τον κώδικα</li>
+                     <li><strong>Ignoring security:</strong> AI μπορεί να δημιουργήσει vulnerabilities</li>
+                     <li><strong>Too many extensions:</strong> Κρατά μόνο τα αναγκαία</li>
+                     <li><strong>Not learning shortcuts:</strong> Μάθε 5 νέα κάθε εβδομάδα</li>
+                 </ul>
+             </div>
+             
+             <h3>🏆 Weekly Optimization Ritual:</h3>
+             <div class="tip">
+                 <strong>Κάθε Παρασκευή (15 λεπτά):</strong><br>
+                 ✅ Review τα shortcuts που χρησιμοποίησες<br>
+                 ✅ Μάθε 2-3 νέα VS Code features<br>
+                 ✅ Update extensions και settings<br>
+                 ✅ Clean up workspace και files<br>
+                 ✅ Backup custom settings και snippets<br>
+                 ✅ Plan learning goals για την επόμενη εβδομάδα
+             </div>
+         </div>
+
+        <div style="background: #f0f9ff; padding: 20px; border-radius: 10px; border-left: 5px solid #3b82f6; margin-top: 30px;">
+            <h3>🎉 Συμπέρασμα</h3>
+            <p>Με αυτές τις τεχνικές, θα γίνεις σημαντικά πιο παραγωγικός στην ανάπτυξη λογισμικού. Θυμήσου:</p>
+            <ul>
+                <li>Η πρακτική κάνει τον άνθρωπο τέλειο</li>
+                <li>Ξεκίνα με τα βασικά shortcuts</li>
+                <li>Χρησιμοποίησε το Copilot σαν βοηθό, όχι σαν αντικαταστάτη</li>
+                <li>Πάντα review τον κώδικα που δημιουργεί το AI</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

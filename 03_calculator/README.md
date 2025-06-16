@@ -1,4 +1,4 @@
-# 🧮 Υπολογιστής Δημοτικών Τελών - Δήμος Άρτας
+# 🧮 Υπολογιστής έκδοσης πιστοποιητικών - Δήμος Άρτας
 
 Μια απλή Flask εφαρμογή που υπολογίζει το κόστος έκδοσης πιστοποιητικών για εκπαιδευτικούς σκοπούς.
 
@@ -32,17 +32,17 @@ pip install -r requirements.txt
 
 ### 3. Εκκίνηση Εφαρμογής
 ```bash
-python app.py
+python3 app.py
 ```
 
 ### 4. Επίσκεψη στην Εφαρμογή
-- **Υπολογιστής:** http://localhost:5002
-- **Οδηγίες Ασκήσεων:** http://localhost:5002/οδηγιες
+- **Υπολογιστής:** http://localhost:5003
+- **Οδηγίες Ασκήσεων:** http://localhost:5003/οδηγιες
 
 ## 🏗️ Δομή Εφαρμογής
 
 ```
-02_calculator/
+03_calculator/
 ├── app.py                    # Κύρια Flask εφαρμογή
 ├── requirements.txt          # Python dependencies
 ├── templates/               # HTML templates
@@ -149,13 +149,13 @@ python app.py
 
 ```bash
 # Έλεγχος αν τρέχει η εφαρμογή
-curl http://localhost:5002
+curl http://localhost:5003
 
 # Σταμάτημα εφαρμογής
 Ctrl + C
 
 # Επανεκκίνηση με αλλαγές
-python app.py
+python3 app.py
 ```
 
 ## 📖 Περαιτέρω Μάθηση
